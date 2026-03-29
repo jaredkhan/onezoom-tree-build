@@ -1,0 +1,5 @@
+outs:
+- md5: 9d2253e0b9e629c8f77eadd8f09c1d88
+  size: 100346119273
+  hash: md5
+  path: latest-all.json.bz2

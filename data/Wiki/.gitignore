@@ -5,3 +5,4 @@
 !.gitignore
 !README.markdown
 !*.dvc
+!wd_JSON
