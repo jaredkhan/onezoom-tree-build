@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 def is_licence_public_domain(licence):
-    return licence.endswith("public domain") or licence.startswith("pd") or licence.startswith("cc0")
+    return "public domain" in licence or licence.startswith("pd") or licence.startswith("cc0")
 
 
 def set_bit_for_first_image_only(images, column_name, candidate=lambda x: True):

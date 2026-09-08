@@ -11,6 +11,25 @@ from oz_tree_build.utilities.db_helper import (
 )
 
 
+class TestIsLicencePublicDomain:
+    @pytest.mark.parametrize(
+        ("licence", "expected"),
+        [
+            ("Marked as being in the public domain", True),
+            ("Released into the public domain", True),
+            ("Marked on Flickr commons as being in the public domain", True),
+            ("Marked as being in the public domain\x9c", True),  # legacy EOL trailing U+009C
+            ("Released into the public domain\x9c", True),
+            ("pd (...)", True),
+            ("cc0 (...)", True),
+            ("CC-BY-SA 2.0 (http://creativecommons.org/licenses/by-sa/2.0/)", False),
+            ("public domain", True),
+        ],
+    )
+    def test_is_licence_public_domain(self, licence, expected):
+        assert process_image_bits.is_licence_public_domain(licence) is expected
+
+
 class TestDBHelper:
     def test_connect_to_database(self, conf_file):
         db = connect_to_database(conf_file=conf_file)
